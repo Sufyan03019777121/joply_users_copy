@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Drawer, Typography, Dropdown, Spin, Menu, message } from "antd";
+import { Button, Drawer, Typography, Dropdown, Menu, message } from "antd";
 import {
   MenuOutlined,
   UserOutlined,
@@ -8,19 +8,17 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import nav_logo from "../../assets/images/Logo.png"
+import nav_logo from "../../assets/images/Logo.png";
 import "./navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [logo, setLogo] = useState(null);
-  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
   const { Title } = Typography;
 
-  // Menu items with  prefix
+  // Menu items
   const menuItems = [
     { name: "Home", path: "/home" },
     { name: "About Us", path: "/about" },
@@ -30,18 +28,19 @@ const Navbar = () => {
     { name: "Register for Job", path: "/register-job" },
   ];
 
-
   useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // remove JWT
+    message.success("Logged out successfully!");
+    navigate("/auth/signup"); // redirect to signup page
   };
-  handleResize();
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
-
-
 
 
   // Profile Dropdown Menu
@@ -57,6 +56,7 @@ const Navbar = () => {
       <Menu.Item
         key="3"
         icon={<LogoutOutlined style={{ color: "red" }} />}
+        onClick={handleLogout} // ✅ logout functionality
         danger
       >
         Logout
@@ -68,14 +68,7 @@ const Navbar = () => {
     <div className="navbar-container">
       {/* Logo */}
       <Link to="/home" className="navbar-logo">
-        {
-          <img
-            src={nav_logo}
-            alt="default-logo"
-            className="navbar-logo-default"
-          />
-
-        }
+        <img src={nav_logo} alt="logo" className="navbar-logo-default" />
         <Title level={4} className="navbar-title"></Title>
       </Link>
 
