@@ -14,16 +14,20 @@
   margin-bottom: 8px;
 }
 
-.services-overview .left-section .main-title {
+.services-overview .left-section {
   font-weight: 700;
   margin-bottom: 20px;
+  color: #464646;
+}
+
+.main-title {
+  color: #464646;
 }
 
 .services-overview .left-section .description {
-  color: #555;
-  font-size: 16px;
-  margin-bottom: 40px;
-  line-height: 1.6;
+  color: #828282;
+  font-size: 0.8rem;
+  margin: 20px 0px;
 }
 
 .services-overview .service-row {
@@ -34,8 +38,9 @@
 }
 
 .services-overview .service-row .image-wrapper {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  padding: 8px;
   border-radius: 10px;
   background-color: #00aEEF;
   overflow: hidden;
@@ -47,7 +52,7 @@
 }
 
 .services-overview .service-row .service-text h6 {
-  font-size: 16px;
+  font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 4px;
 }
@@ -56,31 +61,40 @@
   color: #666;
   margin: 0;
   line-height: 1.5;
-  font-size: 12px;
+  font-size: 0.7rem;
 }
 
 .services-overview .right-section {
   text-align: center;
- 
+
 }
 
 .services-overview .right-section .card-image {
-  width: 400px;
-  height: 450px;
+
+  padding-top: 20px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 10px;
-   border: none;
+  border: none;
+}
+
+.services_image {
+  position: relative;
 }
 
 .services-overview .right-section .services-badge {
-  
-  right: calc(50% - 130px);
-  background-color: #00AEEF;
-  color: #fff;
-  padding: 10px 25px;
+  position: absolute;
+  background: #00aEEF;
+  bottom: -23px;
+  color: white;
+  height: 34%;
+  width: 52%;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  font-size: 1.5rem;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
